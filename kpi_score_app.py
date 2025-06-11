@@ -116,10 +116,25 @@ if manager_name and exec_name:
         st.success("✅ Score saved to 'kpi_scores_log.csv'")
         
         # 💡 Add this part to enable download
-        csv_data = df_new.to_csv(index=False)
+        row_series = pd.Series(record)
+        row_df = row_series.reset_index()
+        row_df.columns = ["KPI Item", "Value"]
+
+        csv_single = row_df.to_csv(index=False)
         st.download_button(
-            label="📥 Download Your KPI Report",
-            data=csv_data,
-            file_name=f"KPI_Score_{exec_name.replace(' ', '_')}.csv",
+            label="📥 Download This Submission (Detailed Report)",
+            data=csv_single,
+            file_name=f"KPI_Report_{exec_name.replace(' ', '_')}.csv",
             mime="text/csv"
         )
+
+        # --- Download all saved results (full log) ---
+        if os.path.exists("kpi_scores_log.csv"):
+            full_df = pd.read_csv("kpi_scores_log.csv")
+            csv_all = full_df.to_csv(index=False)
+            st.download_button(
+                label="📦 Download All Submissions (Excel Format)",
+                data=csv_all,
+                file_name="All_KPI_Scores.csv",
+                mime="text/csv"
+            )
