@@ -68,15 +68,44 @@ if manager_name and exec_name:
 
     if st.button("💾 Save Result"):
         record = {
-            "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
-            "Manager": manager_name,
-            "Executive": exec_name,
-            "Business Score": bp_score * 10,
-            "Operational Score": op_score * 10,
-            "Social Score": sm_score * 10,
-            "Total Score": percent_score,
-            "Rating": rating
-        }
+    "Timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+    "Manager": manager_name,
+    "Executive": exec_name,
+    
+    # --- Business Plan Sliders ---
+    "Achieve budgeted sales revenue": bp1,
+    "Maintain Gross/Net Margins": bp2,
+    "Manage client costs": bp3,
+    "Increase business by 2%": bp4,
+    
+    # --- Operational Sliders ---
+    "Clear account plans": op1,
+    "Monthly review meetings": op2,
+    "Client governance & follow-up": op3,
+    "Demonstrate value-add": op4,
+    "Benchmark competition": op5,
+    "1 day in trade per month": op6,
+    "Pursue revenue leads": op7,
+    "Client relationships": op8,
+    "2 client meetings per week": op9,
+    "Best-in-class folder admin": op10,
+    
+    # --- Social Media Sliders ---
+    "Set SMSP Plan": sm1,
+    "Execute weekly posts": sm2,
+    "Followers gained": sm3,
+    "Engagement": sm4,
+    "Post views": sm5,
+    "Impressions": sm6,
+    "Share of voice": sm7,
+
+    # --- Final Scores ---
+    "Business Score": bp_score * 10,
+    "Operational Score": op_score * 10,
+    "Social Score": sm_score * 10,
+    "Total Score": percent_score,
+    "Rating": rating
+}
         df_new = pd.DataFrame([record])
         if os.path.exists("kpi_scores_log.csv"):
             df_old = pd.read_csv("kpi_scores_log.csv")
