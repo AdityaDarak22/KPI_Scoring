@@ -9,9 +9,9 @@ exec_name = st.text_input("Account Executive Name")
 
 if manager_name and exec_name:
     st.markdown("### 1. Business Plan Delivery (10%)")
-    bp1 = st.slider("Achieve budgeted sales revenue", 0, 10)
-    bp2 = st.slider("Maintain Gross/Net Margins", 0, 10)
-    bp3 = st.slider("Manage client costs", 0, 10)
+    bp1 = st.slider("Achieve budgeted sales revenue on set accounts", 0, 10)
+    bp2 = st.slider("Maintain current Gross and Net Margins as a minimum", 0, 10)
+    bp3 = st.slider("Manage costs with existing clients to ensure alignment with budget", 0, 10)
     bp4 = st.slider("Increase business by 2%", 0, 10)
     bp_raw = bp1 * 0.3 + bp2 * 0.3 + bp3 * 0.3 + bp4 * 0.1
     bp_score = round(bp_raw * 0.10, 2)
