@@ -85,3 +85,12 @@ if manager_name and exec_name:
             df = df_new
         df.to_csv("kpi_scores_log.csv", index=False)
         st.success("✅ Score saved to 'kpi_scores_log.csv'")
+        
+        # 💡 Add this part to enable download
+        csv_data = df_new.to_csv(index=False)
+        st.download_button(
+            label="📥 Download Your KPI Report",
+            data=csv_data,
+            file_name=f"KPI_Score_{exec_name.replace(' ', '_')}.csv",
+            mime="text/csv"
+        )
